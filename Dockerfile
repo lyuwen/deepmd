@@ -22,7 +22,7 @@ RUN apt-get update && \
     wget https://github.com/deepmodeling/deepmd-kit/releases/download/v3.0.0a0/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 && \
     wget https://github.com/deepmodeling/deepmd-kit/releases/download/v3.0.0a0/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 && \
     cat deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 > /tmp/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh && \
-    rm -f deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 \
+    rm -f deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 && \
     bash /tmp/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh -b -p /opt/conda && \
     rm -f /tmp/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh && \
     /opt/conda/bin/conda init && \
