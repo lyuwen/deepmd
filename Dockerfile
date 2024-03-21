@@ -18,12 +18,17 @@ RUN apt-get update && \
       && \
     apt-get autoremove --purge -y && \
     apt-get autoclean -y && \
-    rm -rf /var/cache/apt/* /var/lib/apt/lists/* && \
-    wget https://github.com/deepmodeling/deepmd-kit/releases/download/v3.0.0a0/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 && \
+    rm -rf /var/cache/apt/* /var/lib/apt/lists/*
+
+WORKDIR /tmp
+
+RUN wget https://github.com/deepmodeling/deepmd-kit/releases/download/v3.0.0a0/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 && \
     wget https://github.com/deepmodeling/deepmd-kit/releases/download/v3.0.0a0/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 && \
-    cat deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 > /tmp/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh && \
+    cat deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 > deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh && \
     rm -f deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.0 deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh.1 && \
-    bash /tmp/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh -b -p /opt/conda && \
-    rm -f /tmp/deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh && \
+    bash deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh -b -p /opt/conda && \
+    rm -f deepmd-kit-3.0.0a0-cuda123-Linux-x86_64.sh && \
     /opt/conda/bin/conda init && \
     /opt/conda/bin/pip install --index-url=https://mirrors.bfsu.edu.cn/pypi/web/simple --no-cache-dir "tf-keras==2.15.0"
+
+WORKDIR /work
